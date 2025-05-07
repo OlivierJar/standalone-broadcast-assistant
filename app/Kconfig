@@ -1,15 +1,32 @@
-# Copyright (c) 2021 Nordic Semiconductor ASA
+# Copyright (c) 2024 Demant A/S
 # SPDX-License-Identifier: Apache-2.0
-#
-# This file is the application Kconfig entry point. All application Kconfig
-# options can be defined here or included via other application Kconfig files.
-# You can browse these options using the west targets menuconfig (terminal) or
-# guiconfig (GUI).
 
-menu "Zephyr"
+mainmenu "Bluetooth: Graphical VCP Central App"
+
+config BT_TARGET_DEVICE_NUMBER
+    int "Number of Bluetooth target devices"
+    default 1
+    help
+      Specify the number of the target Bluetooth devices to be scanned for and connected to.
+
+config BT_TARGET_DEVICE_NAME
+    string "Bluetooth target device name"
+    default ""
+    help
+      Specify the name of the target Bluetooth device to be scanned for and connected to.
+
+config BT_TARGET_RSHI_DEVICE_NAME
+    string "Bluetooth target right side stereo hearing instrument device name"
+    default ""
+    help
+      Specify the name of the target Bluetooth right side stereo hearing instrument device
+      to be scanned for and connected to.
+
+config BT_TARGET_LSHI_DEVICE_NAME
+    string "Bluetooth target left side stereo hearing instrument device name"
+    default ""
+    help
+      Specify the name of the target Bluetooth left side stereo hearing instrument device
+      to be scanned for and connected to.
+
 source "Kconfig.zephyr"
-endmenu
-
-module = APP
-module-str = APP
-source "subsys/logging/Kconfig.template.log_config"
