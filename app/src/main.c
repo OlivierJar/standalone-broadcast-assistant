@@ -26,7 +26,7 @@ int main(void){
         return 0;
     }
     printk("Display initialized.\n");
-    create_buttons(scr);
+    create_devices_page(scr);
     while (1) {
         lv_task_handler();
         k_sleep(K_MSEC(50));

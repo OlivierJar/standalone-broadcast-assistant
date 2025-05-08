@@ -14,15 +14,31 @@ int display_init(void)
     return lcd_init();
 
 }
-static void create_buttons_before_connecting(lv_obj_t* scr)
+/*
+Event to happen in the case of clicking in "Devices" Button
+*/
+void devices_btn_event(lv_event_t *e){
+    printk("Devices click event");
+}
+/*
+Event to happen in the case of clicking in "Broadcasts" Button
+*/
+void broadcasts_btn_event(lv_event_t *e){
+    printk("Broadcasts click event");
+}
+void create_navigation_buttons(lv_obj_t* scr){
+    lv_obj_t *devices_btn, *broadcasts_btn;
+    devices_btn = lcd_create_button(scr, "Devices", 140, 50, -75, -80, devices_btn_event);
+    broadcasts_btn = lcd_create_button(scr, "Broadcasts", 140, 50, 75, -80, broadcasts_btn_event);
+}
+void create_devices_page(lv_obj_t* scr)
 {
-    lv_obj_t *connect_btn, *scan_btn;
 
     lcd_clear_screen(scr);
+    create_navigation_buttons(scr);
 
-    connect_btn = lcd_create_button(scr, "Devices", 120, 50, -80, -50, NULL);
-    scan_btn = lcd_create_button(scr, "Broadcasts", 120, 50, 80, -50, NULL);
 }
+
 
 void create_buttons(lv_obj_t* scr)
 {
