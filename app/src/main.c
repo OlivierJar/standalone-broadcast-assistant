@@ -12,13 +12,6 @@
  
  #include "lcd.h"
 static lv_obj_t *scr;
-static void create_buttons(conn_status_t all_conn)
-{
-
-
-    create_buttons_before_connecting();
-
-}
 
 static void create_buttons_before_connecting(void)
 {
@@ -29,6 +22,16 @@ static void create_buttons_before_connecting(void)
     connect_btn = lcd_create_button(scr, "Connect", 100, 50, -60, -20, NULL);
     scan_btn = lcd_create_button(scr, "Scan", 100, 50, 60, -20, NULL);
 }
+
+static void create_buttons()
+{
+
+
+    create_buttons_before_connecting();
+
+}
+
+
 int main(void){
 
     int err;
@@ -40,4 +43,8 @@ int main(void){
     }
     printk("Display initialized.\n");
     create_buttons();
+    while (1) {
+        lv_task_handler();
+        k_sleep(K_MSEC(50));
+    }
 }
